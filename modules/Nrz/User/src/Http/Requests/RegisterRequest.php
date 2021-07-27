@@ -3,6 +3,7 @@
 namespace Nrz\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Nrz\User\Rules\ValidPassword;
 
 class RegisterRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class RegisterRequest extends FormRequest
         return [
             "name"=>['required','string','max:250'],
             "email"=>['required','string','max:250','email','unique:users'],
-            "password"=>['required','string','max:250',"confirmed","min:8"],
+            "password"=>['required', new ValidPassword(), 'confirmed']
         ];
     }
 }

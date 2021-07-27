@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // create product
 Route::post('product/create', [\Nrz\Product\Http\Controllers\ProductController::class, 'store'])
-    ->middleware(["auth:api", 'isAdmin']);
+    ->middleware(["auth:api", 'isAdmin'])->name('product.store');
 
 
 //get all products
